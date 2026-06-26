@@ -384,7 +384,7 @@ function initLightbox() {
       scale: 0.95,
       duration: 0.25,
       onComplete: () => {
-        lightboxImg.src = imgEl.getAttribute('data-src') || imgEl.src;
+        lightboxImg.src = imgEl.getAttribute('data-lightbox') || imgEl.getAttribute('data-src') || imgEl.src;
         lightboxTitle.textContent = title;
         lightboxMeta.textContent = meta;
         
@@ -753,73 +753,73 @@ function initMagazineStories() {
     "Aarav & Meera": {
       location: "The Oberoi Udaivilas, Udaipur",
       date: "November 12, 2025",
-      heroImage: "./images/couple_palace.png",
+      heroImage: "./images/couple_palace.webp",
       description: "An elegant pre-wedding collection capturing quiet smiles and historic architectural beauty across palatial arches.",
       tags: ["Pre Wedding", "Heritage", "Royal Portraiture"],
       images: [
-        { src: "./images/couple_palace.png", title: "Palace Romance", meta: "The Oberoi Udaivilas", layoutClass: "col-span-2" },
-        { src: "./images/bride_portrait.png", title: "Bridal Splendor", meta: "Polki Jewellery", layoutClass: "portrait" },
-        { src: "./images/royal_groom.png", title: "Royal Groom", meta: "Courtyard Light", layoutClass: "portrait" },
-        { src: "./images/henna_details.png", title: "Henna Details", meta: "Bridal Prep", layoutClass: "square" },
-        { src: "./images/wedding_ceremony.png", title: "The Vows", meta: "Sacred Fire", layoutClass: "portrait" },
-        { src: "./images/lakeside_mandap.png", title: "Lakeside Mandap", meta: "Sunset Ceremony", layoutClass: "landscape" },
-        { src: "./images/candid_laugh.png", title: "Candid Laughter", meta: "Haldi Moments", layoutClass: "portrait" },
-        { src: "./images/wedding_ceremony.png", title: "Varmala Ceremony", meta: "The Royal Union", layoutClass: "col-span-2" },
-        { src: "./images/couple_forest.png", title: "First Dance", meta: "Grand Ballroom", layoutClass: "portrait" }
+        { src: "./images/couple_palace_thumb.webp", lightbox: "./images/couple_palace.webp", title: "Palace Romance", meta: "The Oberoi Udaivilas", layoutClass: "col-span-2" },
+        { src: "./images/bride_portrait_thumb.webp", lightbox: "./images/bride_portrait.webp", title: "Bridal Splendor", meta: "Polki Jewellery", layoutClass: "portrait" },
+        { src: "./images/royal_groom_thumb.webp", lightbox: "./images/royal_groom.webp", title: "Royal Groom", meta: "Courtyard Light", layoutClass: "portrait" },
+        { src: "./images/henna_details_thumb.webp", lightbox: "./images/henna_details.webp", title: "Henna Details", meta: "Bridal Prep", layoutClass: "square" },
+        { src: "./images/wedding_ceremony_thumb.webp", lightbox: "./images/wedding_ceremony.webp", title: "The Vows", meta: "Sacred Fire", layoutClass: "portrait" },
+        { src: "./images/lakeside_mandap_thumb.webp", lightbox: "./images/lakeside_mandap.webp", title: "Lakeside Mandap", meta: "Sunset Ceremony", layoutClass: "landscape" },
+        { src: "./images/candid_laugh_thumb.webp", lightbox: "./images/candid_laugh.webp", title: "Candid Laughter", meta: "Haldi Moments", layoutClass: "portrait" },
+        { src: "./images/wedding_ceremony_thumb.webp", lightbox: "./images/wedding_ceremony.webp", title: "Varmala Ceremony", meta: "The Royal Union", layoutClass: "col-span-2" },
+        { src: "./images/couple_forest_thumb.webp", lightbox: "./images/couple_forest.webp", title: "First Dance", meta: "Grand Ballroom", layoutClass: "portrait" }
       ]
     },
     "Rohan & Priya": {
       location: "Fateh Garh Palace",
       date: "October 18, 2025",
-      heroImage: "./images/lakeside_mandap.png",
+      heroImage: "./images/lakeside_mandap.webp",
       description: "A heritage wedding overlooking Udaipur city, filled with royal custom colors and candid emotional vows.",
       tags: ["Royal Wedding", "Heritage", "Vibrant Ceremony"],
       images: [
-        { src: "./images/candid_laugh.png", title: "Candid Walk", meta: "Fateh Garh Palace", layoutClass: "col-span-2" },
-        { src: "./images/couple_palace.png", title: "The Palace Entrance", meta: "Arriving at Fateh Garh", layoutClass: "portrait" },
-        { src: "./images/bride_portrait.png", title: "Dancing Under Stars", meta: "Garden Reception", layoutClass: "portrait" },
-        { src: "./images/henna_details.png", title: "Henna Grace", meta: "Hand details", layoutClass: "square" },
-        { src: "./images/lakeside_mandap.png", title: "Mandap View", meta: "Lakeside Ceremony", layoutClass: "portrait" },
-        { src: "./images/wedding_ceremony.png", title: "Palace Ballroom", meta: "Reception Hall", layoutClass: "landscape" },
-        { src: "./images/wedding_ceremony.png", title: "The Varmala Exchange", meta: "Traditional Ritual", layoutClass: "portrait" },
-        { src: "./images/candid_laugh.png", title: "Pure Joy", meta: "Candid Smile", layoutClass: "col-span-2" },
-        { src: "./images/couple_forest.png", title: "Shadows and Light", meta: "Lake Pier", layoutClass: "portrait" }
+        { src: "./images/candid_laugh_thumb.webp", lightbox: "./images/candid_laugh.webp", title: "Candid Walk", meta: "Fateh Garh Palace", layoutClass: "col-span-2" },
+        { src: "./images/couple_forest_thumb.webp", lightbox: "./images/couple_forest.webp", title: "The Palace Entrance", meta: "Arriving at Fateh Garh", layoutClass: "portrait" },
+        { src: "./images/couple_palace_thumb.webp", lightbox: "./images/couple_palace.webp", title: "Dancing Under Stars", meta: "Garden Reception", layoutClass: "portrait" },
+        { src: "./images/henna_details_thumb.webp", lightbox: "./images/henna_details.webp", title: "Henna Grace", meta: "Hand details", layoutClass: "square" },
+        { src: "./images/lakeside_mandap_thumb.webp", lightbox: "./images/lakeside_mandap.webp", title: "Mandap View", meta: "Lakeside Ceremony", layoutClass: "portrait" },
+        { src: "./images/wedding_ceremony_thumb.webp", lightbox: "./images/wedding_ceremony.webp", title: "Palace Ballroom", meta: "Reception Hall", layoutClass: "landscape" },
+        { src: "./images/wedding_ceremony_thumb.webp", lightbox: "./images/wedding_ceremony.webp", title: "The Varmala Exchange", meta: "Traditional Ritual", layoutClass: "portrait" },
+        { src: "./images/candid_laugh_thumb.webp", lightbox: "./images/candid_laugh.webp", title: "Pure Joy", meta: "Candid Smile", layoutClass: "col-span-2" },
+        { src: "./images/couple_forest_thumb.webp", lightbox: "./images/couple_forest.webp", title: "Shadows and Light", meta: "Lake Pier", layoutClass: "portrait" }
       ]
     },
     "Kunal & Aditi": {
       location: "Chunda Palace",
       date: "December 08, 2025",
-      heroImage: "./images/wedding_ceremony.png",
+      heroImage: "./images/couple_forest.webp",
       description: "A spectacular indoor traditional palace wedding highlighting intricate gold walls and vibrant traditional events.",
       tags: ["Palace Luxury", "Sheesh Mahal", "Traditional Ceremony"],
       images: [
-        { src: "./images/lakeside_mandap.png", title: "The Indoor Mandap", meta: "Chunda Palace", layoutClass: "col-span-2" },
-        { src: "./images/couple_palace.png", title: "Golden Hour Glow", meta: "Lakeside View", layoutClass: "portrait" },
-        { src: "./images/royal_groom.png", title: "Quiet Moments", meta: "Palace Corridor", layoutClass: "portrait" },
-        { src: "./images/bride_portrait.png", title: "Bridal Portrait", meta: "Sunrise Light", layoutClass: "square" },
-        { src: "./images/wedding_ceremony.png", title: "Ring Exchange", meta: "Lakeside Deck", layoutClass: "portrait" },
-        { src: "./images/lakeside_mandap.png", title: "The Dinner Spread", meta: "Palace Gardens", layoutClass: "landscape" },
-        { src: "./images/couple_palace.png", title: "Hand in Hand", meta: "Palace Courtyard", layoutClass: "portrait" },
-        { src: "./images/bride_portrait.png", title: "Candid Grace", meta: "Bride's Portrait", layoutClass: "col-span-2" },
-        { src: "./images/couple_forest.png", title: "Departure", meta: "Bidaai Ceremony", layoutClass: "portrait" }
+        { src: "./images/lakeside_mandap_thumb.webp", lightbox: "./images/lakeside_mandap.webp", title: "The Indoor Mandap", meta: "Chunda Palace", layoutClass: "col-span-2" },
+        { src: "./images/couple_palace_thumb.webp", lightbox: "./images/couple_palace.webp", title: "Golden Hour Glow", meta: "Lakeside View", layoutClass: "portrait" },
+        { src: "./images/couple_forest_thumb.webp", lightbox: "./images/couple_forest.webp", title: "Quiet Moments", meta: "Palace Corridor", layoutClass: "portrait" },
+        { src: "./images/bride_portrait_thumb.webp", lightbox: "./images/bride_portrait.webp", title: "Bridal Portrait", meta: "Sunrise Light", layoutClass: "square" },
+        { src: "./images/wedding_ceremony_thumb.webp", lightbox: "./images/wedding_ceremony.webp", title: "Ring Exchange", meta: "Lakeside Deck", layoutClass: "portrait" },
+        { src: "./images/lakeside_mandap_thumb.webp", lightbox: "./images/lakeside_mandap.webp", title: "The Dinner Spread", meta: "Palace Gardens", layoutClass: "landscape" },
+        { src: "./images/couple_palace_thumb.webp", lightbox: "./images/couple_palace.webp", title: "Hand in Hand", meta: "Palace Courtyard", layoutClass: "portrait" },
+        { src: "./images/bride_portrait_thumb.webp", lightbox: "./images/bride_portrait.webp", title: "Candid Grace", meta: "Bride's Portrait", layoutClass: "col-span-2" },
+        { src: "./images/couple_forest_thumb.webp", lightbox: "./images/couple_forest.webp", title: "Departure", meta: "Bidaai Ceremony", layoutClass: "portrait" }
       ]
     },
     "Harsh & Naina": {
       location: "Jagmandir Island Palace",
       date: "September 24, 2025",
-      heroImage: "./images/candid_laugh.png",
+      heroImage: "./images/candid_laugh.webp",
       description: "A sunset celebration set on a private island, capturing deep emotional glances and beautiful reflections.",
       tags: ["Island Wedding", "Sunset", "Emotional Vows"],
       images: [
-        { src: "./images/couple_forest.png", title: "Palatial Scale", meta: "Jagmandir Island", layoutClass: "col-span-2" },
-        { src: "./images/couple_palace.png", title: "Sunset Stroll", meta: "Island Deck", layoutClass: "portrait" },
-        { src: "./images/royal_groom.png", title: "Whispers by the Water", meta: "Lake Pichola Side", layoutClass: "portrait" },
-        { src: "./images/henna_details.png", title: "Intimate Close-up", meta: "Golden Hour", layoutClass: "square" },
-        { src: "./images/wedding_ceremony.png", title: "Promise of Love", meta: "Lakeside Vows", layoutClass: "portrait" },
-        { src: "./images/lakeside_mandap.png", title: "Palace Arches", meta: "Stonework Details", layoutClass: "landscape" },
-        { src: "./images/candid_laugh.png", title: "Celebration Spark", meta: "Engagement Night", layoutClass: "portrait" },
-        { src: "./images/couple_forest.png", title: "Dancing in the Rain", meta: "Island Gardens", layoutClass: "col-span-2" },
-        { src: "./images/bride_portrait.png", title: "The Portrait", meta: "Black & White Classic", layoutClass: "portrait" }
+        { src: "./images/couple_forest_thumb.webp", lightbox: "./images/couple_forest.webp", title: "Palatial Scale", meta: "Jagmandir Island", layoutClass: "col-span-2" },
+        { src: "./images/couple_palace_thumb.webp", lightbox: "./images/couple_palace.webp", title: "Sunset Stroll", meta: "Island Deck", layoutClass: "portrait" },
+        { src: "./images/couple_forest_thumb.webp", lightbox: "./images/couple_forest.webp", title: "Whispers by the Water", meta: "Lake Pichola Side", layoutClass: "portrait" },
+        { src: "./images/royal_groom_thumb.webp", lightbox: "./images/royal_groom.webp", title: "Intimate Close-up", meta: "Golden Hour", layoutClass: "square" },
+        { src: "./images/wedding_ceremony_thumb.webp", lightbox: "./images/wedding_ceremony.webp", title: "Promise of Love", meta: "Lakeside Vows", layoutClass: "portrait" },
+        { src: "./images/couple_palace_thumb.webp", lightbox: "./images/couple_palace.webp", title: "Palace Arches", meta: "Stonework Details", layoutClass: "landscape" },
+        { src: "./images/candid_laugh_thumb.webp", lightbox: "./images/candid_laugh.webp", title: "Celebration Spark", meta: "Engagement Night", layoutClass: "portrait" },
+        { src: "./images/couple_forest_thumb.webp", lightbox: "./images/couple_forest.webp", title: "Dancing in the Rain", meta: "Island Gardens", layoutClass: "col-span-2" },
+        { src: "./images/bride_portrait_thumb.webp", lightbox: "./images/bride_portrait.webp", title: "The Portrait", meta: "Black & White Classic", layoutClass: "portrait" }
       ]
     }
   };
@@ -857,7 +857,7 @@ function initMagazineStories() {
           <div class="story-card-gallery">
             ${data.images.map((img) => `
               <div class="story-grid-item ${img.layoutClass}">
-                <img src="${img.src}" alt="${img.title}" onload="this.classList.add('loaded')">
+                <img src="${img.src}" data-lightbox="${img.lightbox}" alt="${img.title}" onload="this.classList.add('loaded')" loading="lazy">
                 <div class="item-title" style="display: none;">${img.title}</div>
                 <div class="item-meta" style="display: none;">${img.meta}</div>
               </div>
