@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ClicksToRemember - Award-winning luxury wedding photographer in Udaipur. Capturing emotional, elegant, and timeless wedding stories and cinematic films.">
+  <title>ClicksToRemember | Luxury Cinematic Wedding Photographer in Udaipur</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Cormorant Garamond (luxury serif) & Inter (clean sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Style Sheet -->
+  <script type="module" crossorigin src="/assets/index-8koHjLss.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-k9PCvkIx.css">
+</head>
+<body>
+
+  <!-- Premium Shutter Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-monogram">CTR</div>
+      <div class="preloader-brand">ClicksToRemember</div>
+      <div class="preloader-loc">UDAIPUR</div>
+      <div class="preloader-shutter-container">
+        <div class="shutter-progress-bar"></div>
+      </div>
+    </div>
+    <div class="shutter-gate gate-top"></div>
+    <div class="shutter-gate gate-bottom"></div>
+  </div>
+
+
+  <!-- Ambient Audio Controller -->
+  <audio id="ambient-audio" loop preload="auto">
+    <!-- Will fallback to standard sample or direct link -->
+    <source src="/audio/ambient_piano.mp3" type="audio/mp3">
+    <source src="https://archive.org/download/ThreeGnossiennesErikSatie/Satie.mp3" type="audio/mp3">
+  </audio>
+  
+  <button id="audio-toggle" class="audio-control-btn" aria-label="Toggle Background Music">
+    <div class="sound-waves">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <span class="audio-label">PLAY AUDIO</span>
+  </button>
+
+  <!-- Floating Availability Button -->
+  <a href="#contact" class="floating-availability-btn" id="floating-availability">
+    <span class="pulse-dot"></span>
+    <span class="btn-text">CHECK AVAILABILITY</span>
+  </a>
+
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="nav-links nav-left">
+        <a href="#home" class="nav-item">Home</a>
+        <a href="#portfolio" class="nav-item">Portfolio</a>
+        <a href="#films" class="nav-item">Films</a>
+      </div>
+      <div class="nav-logo">
+        <a href="#home">
+          <span class="logo-title">ClicksToRemember</span>
+          <span class="logo-subtitle">UDAIPUR</span>
+        </a>
+      </div>
+      <div class="nav-links nav-right">
+        <a href="#experience" class="nav-item">Experience</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#testimonials" class="nav-item">Stories</a>
+        <a href="#contact" class="nav-item">Contact</a>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav-overlay">
+    <div class="mobile-nav-content">
+      <a href="#home" class="mobile-nav-item">Home</a>
+      <a href="#portfolio" class="mobile-nav-item">Portfolio</a>
+      <a href="#films" class="mobile-nav-item">Films</a>
+      <a href="#experience" class="mobile-nav-item">Experience</a>
+      <a href="#about" class="mobile-nav-item">About</a>
+      <a href="#testimonials" class="mobile-nav-item">Stories</a>
+      <a href="#contact" class="mobile-nav-item">Contact</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-video-wrapper">
+      <div class="hero-video-darkener"></div>
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="https://raw.githubusercontent.com/arungop/akhiarya/main/assets/video/save_s.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-content">
+      <div class="hero-subtitle reveal-text">Wedding Photography &bull; Pre Wedding &bull; Cinematic Films &bull; Destination Weddings</div>
+      <h1 class="hero-title reveal-text-lines">
+        <span>EVERY CLICK</span>
+        <span>BECOMES A MEMORY</span>
+      </h1>
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn btn-primary magnetic-btn">View Portfolio</a>
+        <a href="#contact" class="btn btn-secondary magnetic-btn">Book Your Date</a>
+      </div>
+    </div>
+    
+    <div class="hero-scroll-indicator">
+      <span class="scroll-label">EXPLORE</span>
+      <div class="scroll-track">
+        <div class="scroll-bullet"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Showcase -->
+  <section id="portfolio" class="portfolio-section">
+    <div class="section-container">
+      <div class="section-header align-center">
+        <span class="section-tag">GALLERY</span>
+        <h2 class="section-title">The Art of the Moment</h2>
+      </div>
+
+      <!-- Filter Categories -->
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="wedding">Wedding</button>
+        <button class="filter-btn" data-filter="pre-wedding">Pre Wedding</button>
+        <button class="filter-btn" data-filter="couples">Couples</button>
+        <button class="filter-btn" data-filter="destination">Destination</button>
+        <button class="filter-btn" data-filter="bride">Bride</button>
+        <button class="filter-btn" data-filter="groom">Groom</button>
+        <button class="filter-btn" data-filter="candid">Candid</button>
+      </div>
+
+      <!-- Masonry Grid -->
+      <div class="portfolio-masonry">
+        
+        <!-- Item 1 (Udaipur Palace) -->
+        <div class="masonry-item landscape" data-category="wedding couples destination">
+          <div class="masonry-item-inner">
+            <img class="lazy-media" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-src="/images/couple_palace.png" alt="Aarav & Meera at City Palace Udaipur">
+            <div class="item-overlay"></div>
+            <div class="item-details">
+              <span class="item-meta">Udaipur, Rajasthan</span>
+              <h3 class="item-title">Aarav & Meera</h3>
+              <div class="item-icon-wrap">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 (Bride Portrait) -->
+        <div class="masonry-item portrait" data-category="wedding bride">
+          <div class="masonry-item-inner">
+            <img class="lazy-media" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" data-src="/images/bride_portrait.png" alt="Bridal Grace Portrait">
+            <div class="item-overlay"></div>
+            <div class="item-details">
+              <span class="item-meta">The Golden Hour</span>
+              <h3 class="item-title">Riya's Splendor</h3>
+              <div class="item-icon-wrap">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 (Groom Portrait) -->
+        <div class="masonry-item portrait" data-category="wedding groom">
+          <div class="masonry-item-inner">
+            <img class="lazy-media" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" data-src="/images/royal_groom.png" alt="Groom Royal Portrait">
+            <div class="item-overlay"></div>
+            <div class="item-details">
+              <span class="item-meta">Jagmandir Palace</span>
+              <h3 class="item-title">Dev's Elegance</h3>
+              <div class="item-icon-wrap">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 (Pre-Wedding Forest) -->
+        <div class="masonry-item portrait" data-category="pre-wedding couples">
+          <div class="masonry-item-inner">
+            <img class="lazy-media" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Couple Walking in Forest">
+            <div class="item-overlay"></div>
+            <div class="item-details">
+              <span class="item-meta">Aravali Foothills</span>
+              <h3 class="item-title">Kabir & Ananya</h3>
+              <div class="item-icon-wrap">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 (Mandap Ceremony) -->
+        <div class="masonry-item portrait" data-category="wedding candid">
+          <div class="masonry-item-inner">
+            <img class="lazy-media" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" data-src="/images/wedding_ceremony.png" alt="Indian Wedding Mandap Rituals">
+            <div class="item-overlay"></div>
+            <div class="item-details">
+              <span class="item-meta">The Sacred Fire</span>
+              <h3 class="item-title">Vows of Eternity</h3>
+              <div class="item-icon-wrap">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 (Lakeside Ceremony) -->
+        <div class="masonry-item fullwidth" data-category="wedding destination">
+          <div class="masonry-item-inner">
+            <img class="lazy-media" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 9'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Lakeside Mandap Ceremony Udaipur">
+            <div class="item-overlay"></div>
+            <div class="item-details">
+              <span class="item-meta">Taj Lake Palace, Udaipur</span>
+              <h3 class="item-title">The Royal Union</h3>
+              <div class="item-icon-wrap">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7 (Candid Laugh) -->
+        <div class="masonry-item portrait" data-category="candid couples">
+          <div class="masonry-item-inner">
+            <img class="lazy-media" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?auto=format&fit=crop&w=800&q=80" alt="Bride and Groom Laughing">
+            <div class="item-overlay"></div>
+            <div class="item-details">
+              <span class="item-meta">Haldi Ceremony</span>
+              <h3 class="item-title">Joy Untamed</h3>
+              <div class="item-icon-wrap">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8 (Bridal Hands Details) -->
+        <div class="masonry-item landscape" data-category="bride">
+          <div class="masonry-item-inner">
+            <img class="lazy-media" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1591555200813-b5e298ee9dca?auto=format&fit=crop&w=800&q=80" alt="Bridal Henna Details">
+            <div class="item-overlay"></div>
+            <div class="item-details">
+              <span class="item-meta">Bridal Details</span>
+              <h3 class="item-title">Henna & Gold</h3>
+              <div class="item-icon-wrap">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <button class="lightbox-close" aria-label="Close Lightbox"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lightbox-prev" aria-label="Previous Image"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="lightbox-next" aria-label="Next Image"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Lightbox View">
+    </div>
+    <div class="lightbox-caption">
+      <div id="lightbox-title"></div>
+      <div id="lightbox-meta"></div>
+    </div>
+  </div>
+
+  <!-- Featured Wedding Stories (Horizontal Scroll) -->
+  <section id="stories" class="stories-section">
+    <div class="section-container-fluid">
+      <div class="section-header align-left padding-left">
+        <span class="section-tag">COLLECTIONS</span>
+        <h2 class="section-title">Featured Stories</h2>
+      </div>
+      
+      <!-- Horizontal Scroll Container -->
+      <div class="horizontal-scroll-container">
+        <div class="horizontal-scroll-wrapper">
+          
+          <!-- Story 1 -->
+          <div class="story-card">
+            <div class="story-img-wrap">
+              <img src="/images/couple_palace.png" alt="Aarav and Meera Wedding Story">
+            </div>
+            <div class="story-info">
+              <span class="story-location">The Oberoi Udaivilas, Udaipur</span>
+              <h3 class="story-names">Aarav & Meera</h3>
+              <p class="story-desc">An elegant pre-wedding collection capturing quiet smiles and historic architectural beauty across palatial arches.</p>
+              <button class="story-view-btn magnetic-btn">View Story <i class="fa-solid fa-arrow-right-long"></i></button>
+            </div>
+          </div>
+
+          <!-- Story 2 -->
+          <div class="story-card">
+            <div class="story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Rohan and Priya Wedding Story">
+            </div>
+            <div class="story-info">
+              <span class="story-location">Fateh Garh Palace</span>
+              <h3 class="story-names">Rohan & Priya</h3>
+              <p class="story-desc">A heritage wedding overlooking Udaipur city, filled with royal custom colors and candid emotional vows.</p>
+              <button class="story-view-btn magnetic-btn">View Story <i class="fa-solid fa-arrow-right-long"></i></button>
+            </div>
+          </div>
+
+          <!-- Story 3 -->
+          <div class="story-card">
+            <div class="story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Kunal and Aditi Wedding Story">
+            </div>
+            <div class="story-info">
+              <span class="story-location">Chunda Palace</span>
+              <h3 class="story-names">Kunal & Aditi</h3>
+              <p class="story-desc">A spectacular indoor traditional palace wedding highlighting intricate gold walls and vibrant traditional events.</p>
+              <button class="story-view-btn magnetic-btn">View Story <i class="fa-solid fa-arrow-right-long"></i></button>
+            </div>
+          </div>
+
+          <!-- Story 4 -->
+          <div class="story-card">
+            <div class="story-img-wrap">
+              <img src="https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?auto=format&fit=crop&w=800&q=80" alt="Harsh and Naina Wedding Story">
+            </div>
+            <div class="story-info">
+              <span class="story-location">Jagmandir Island Palace</span>
+              <h3 class="story-names">Harsh & Naina</h3>
+              <p class="story-desc">A sunset celebration set on a private island, capturing deep emotional glances and beautiful reflections.</p>
+              <button class="story-view-btn magnetic-btn">View Story <i class="fa-solid fa-arrow-right-long"></i></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Magazine Story Detail Modal -->
+  <div id="story-modal" class="story-modal">
+    <div class="story-modal-card">
+      <button class="story-modal-close" aria-label="Close Story"><i class="fa-solid fa-xmark"></i></button>
+      <div class="story-modal-content">
+        <!-- Content dynamically generated in main.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Cinematic Films -->
+  <section id="films" class="films-section">
+    <div class="section-container">
+      <div class="section-header align-center">
+        <span class="section-tag">MOVING VISUALS</span>
+        <h2 class="section-title">Cinematic Films</h2>
+      </div>
+
+      <div class="films-grid">
+        
+        <!-- Film 1 -->
+        <div class="film-card" data-video-url="https://raw.githubusercontent.com/Shin-da/wedding-invitation/master/video.mp4">
+          <div class="film-preview-container">
+            <video class="film-preview-video" muted loop playsinline preload="metadata">
+              <source src="https://raw.githubusercontent.com/Shin-da/wedding-invitation/master/video.mp4" type="video/mp4">
+            </video>
+            <div class="film-card-overlay"></div>
+            <div class="film-play-btn">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+          <div class="film-details">
+            <span class="film-duration">4:12 Min</span>
+            <h3 class="film-title">Royal Palace Wedding</h3>
+          </div>
+        </div>
+
+        <!-- Film 2 -->
+        <div class="film-card" data-video-url="https://raw.githubusercontent.com/pcakhilnadh/SethuWedsAkhil/main/attached_assets/couple_video.mp4">
+          <div class="film-preview-container">
+            <video class="film-preview-video" muted loop playsinline preload="metadata">
+              <source src="https://raw.githubusercontent.com/pcakhilnadh/SethuWedsAkhil/main/attached_assets/couple_video.mp4" type="video/mp4">
+            </video>
+            <div class="film-card-overlay"></div>
+            <div class="film-play-btn">
+              <i class="fa-solid fa-play"></i>
+            </div>
+          </div>
+          <div class="film-details">
+            <span class="film-duration">3:45 Min</span>
+            <h3 class="film-title">Destination Wedding Story</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen Cinematic Video Player -->
+  <div id="video-player-modal" class="video-player-modal">
+    <button class="video-player-close" aria-label="Close Video"><i class="fa-solid fa-xmark"></i></button>
+    <div class="video-player-container">
+      <video id="cinematic-player" controls playsinline>
+        <source src="" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- Numbers / Milestones Section -->
+  <section class="numbers-section">
+    <div class="section-container">
+      <div class="numbers-grid">
+        
+        <!-- Counter 1 -->
+        <div class="counter-item">
+          <div class="counter-number-wrap">
+            <span class="counter-number" data-target="170">0</span>
+            <span class="counter-plus">+</span>
+          </div>
+          <p class="counter-label">Happy Couples</p>
+        </div>
+
+        <!-- Counter 2 -->
+        <div class="counter-item">
+          <div class="counter-number-wrap">
+            <span class="counter-number" data-target="4.9">0.0</span>
+            <span class="counter-star">★</span>
+          </div>
+          <p class="counter-label">Google Rating</p>
+        </div>
+
+        <!-- Counter 3 -->
+        <div class="counter-item">
+          <div class="counter-number-wrap">
+            <span class="counter-number" data-target="1000">0</span>
+            <span class="counter-plus">+</span>
+          </div>
+          <p class="counter-label">Events Captured</p>
+        </div>
+
+        <!-- Counter 4 -->
+        <div class="counter-item">
+          <div class="counter-number-wrap">
+            <span class="counter-number" data-target="10">0</span>
+            <span class="counter-plus">+</span>
+          </div>
+          <p class="counter-label">Years of Experience</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience / Journey Section -->
+  <section id="experience" class="experience-section">
+    <div class="section-container">
+      <div class="section-header align-center">
+        <span class="section-tag">OUR METHOD</span>
+        <h2 class="section-title">The Experience Timeline</h2>
+      </div>
+
+      <div class="experience-timeline">
+        <div class="timeline-line"></div>
+        
+        <!-- Step 1 -->
+        <div class="timeline-step">
+          <div class="timeline-icon">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <div class="timeline-content">
+            <span class="step-num">01 / MEET</span>
+            <h3 class="step-title">Elegant Consultation</h3>
+            <p class="step-desc">We align on your creative vision, visual preferences, and storyboard over coffee or a call.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-step">
+          <div class="timeline-icon">
+            <i class="fa-solid fa-map-location-dot"></i>
+          </div>
+          <div class="timeline-content">
+            <span class="step-num">02 / PLAN</span>
+            <h3 class="step-title">Scouting & Direction</h3>
+            <p class="step-desc">We scout direct angles, check lighting paths, and coordinate styling to build the cinematic lookbook.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-step">
+          <div class="timeline-icon">
+            <i class="fa-solid fa-camera"></i>
+          </div>
+          <div class="timeline-content">
+            <span class="step-num">03 / CAPTURE</span>
+            <h3 class="step-title">Immersive Shooting</h3>
+            <p class="step-desc">We document your day using high-end Leica & Sony cinema gear, focusing on raw, unprompted emotions.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline-step">
+          <div class="timeline-icon">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <div class="timeline-content">
+            <span class="step-num">04 / EDIT</span>
+            <h3 class="step-title">Editorial Color-Grading</h3>
+            <p class="step-desc">Every frame is curated, retouched, and custom graded to evoke an elegant, painterly luxury mood.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="timeline-step">
+          <div class="timeline-icon">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+          <div class="timeline-content">
+            <span class="step-num">05 / DELIVER</span>
+            <h3 class="step-title">The Heirloom Box</h3>
+            <p class="step-desc">You receive a digital gallery in high-res and an optional custom hand-bound linen photo album.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Photographer Section -->
+  <section id="about" class="about-section">
+    <div class="section-container">
+      <div class="about-grid">
+        
+        <!-- Left: Image -->
+        <div class="about-image-wrapper">
+          <img class="lazy-media" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 4'%3E%3C/svg%3E" data-src="/images/about_photographer.png" alt="ClicksToRemember Udaipur Team">
+        </div>
+
+        <!-- Right: Content -->
+        <div class="about-content">
+          <span class="section-tag">THE ARTISTS</span>
+          <h2 class="about-heading">Capturing memories you'll relive forever.</h2>
+          <p class="about-text">
+            At ClicksToRemember, every wedding is more than an event—it's a story filled with emotions, traditions, laughter, and unforgettable moments. We focus on capturing genuine memories that couples can cherish for a lifetime through timeless photography and cinematic films.
+          </p>
+          
+          <div class="signature">
+            <span class="sig-name">ClicksToRemember</span>
+            <span class="sig-title">Fine Art Storytellers</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Carousel Section -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="testimonials-bg-effect"></div>
+    <div class="section-container">
+      <div class="section-header align-center">
+        <span class="section-tag">KIND WORDS</span>
+        <h2 class="section-title">Handwritten Notes</h2>
+      </div>
+
+      <!-- Testimonial Carousel -->
+      <div class="testimonials-carousel">
+        <div class="testimonials-track">
+          
+          <!-- Testimonial 1 -->
+          <div class="testimonial-slide active">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <blockquote class="testimonial-quote">
+              "The team guided us effortlessly throughout the entire wedding. Every photograph feels timeless, and their creativity exceeded all our expectations."
+            </blockquote>
+            <div class="testimonial-author">
+              <h4 class="author-name">Meera & Aarav</h4>
+              <span class="author-location">Oberoi Udaivilas, Udaipur</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <blockquote class="testimonial-quote">
+              "They transformed our special day into unforgettable memories. Professional, friendly, and incredibly talented."
+            </blockquote>
+            <div class="testimonial-author">
+              <h4 class="author-name">Priya & Rohan</h4>
+              <span class="author-location">Fateh Garh Palace</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <blockquote class="testimonial-quote">
+              "The photographs were beautifully edited and delivered quickly. Every image tells a story we'll treasure forever."
+            </blockquote>
+            <div class="testimonial-author">
+              <h4 class="author-name">Aditi & Kunal</h4>
+              <span class="author-location">Chunda Palace</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-nav">
+          <button class="carousel-dot active" aria-label="Slide 1" data-slide="0"></button>
+          <button class="carousel-dot" aria-label="Slide 2" data-slide="1"></button>
+          <button class="carousel-dot" aria-label="Slide 3" data-slide="2"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Style Feed -->
+  <section class="instagram-section">
+    <div class="section-container">
+      <div class="section-header align-center">
+        <span class="section-tag">INSTAGRAM</span>
+        <h2 class="section-title">Subtle Visual Snippets</h2>
+      </div>
+
+      <div class="instagram-grid">
+        
+        <!-- Insta Item 1 -->
+        <div class="insta-item">
+          <img src="/images/bride_portrait.png" alt="Bridal portrait details">
+          <div class="insta-overlay">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+
+        <!-- Insta Item 2 -->
+        <div class="insta-item">
+          <img src="/images/royal_groom.png" alt="Groom detail">
+          <div class="insta-overlay">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+
+        <!-- Insta Item 3 -->
+        <div class="insta-item">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=400&q=80" alt="Instagram couple moment">
+          <div class="insta-overlay">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+
+        <!-- Insta Item 4 -->
+        <div class="insta-item">
+          <img src="/images/wedding_ceremony.png" alt="Wedding mandap fire">
+          <div class="insta-overlay">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+
+        <!-- Insta Item 5 -->
+        <div class="insta-item">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=400&q=80" alt="Instagram forest photoshoot">
+          <div class="insta-overlay">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+
+        <!-- Insta Item 6 -->
+        <div class="insta-item">
+          <img src="/images/couple_palace.png" alt="Couple balcony view">
+          <div class="insta-overlay">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA Section -->
+  <section id="contact" class="contact-section">
+    <div class="contact-bg-wrap">
+      <div class="contact-darkener"></div>
+      <img class="lazy-media contact-bg-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-src="/images/couple_palace.png" alt="Couple walking at sunset">
+    </div>
+    
+    <div class="contact-content">
+      <span class="section-tag light">COMMISSION US</span>
+      <h2 class="contact-heading">Let's Capture Your Forever Story</h2>
+      <p class="contact-subheading">Tell us about your love story, your dates, and your dream celebration.</p>
+      
+      <div class="contact-buttons">
+        <a href="tel:+917728879343" class="btn btn-primary magnetic-btn"><i class="fa-solid fa-phone"></i> Call Now</a>
+        <a href="https://wa.me/917728879343" class="btn btn-whatsapp magnetic-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <button id="consultation-trigger" class="btn btn-outline-light magnetic-btn"><i class="fa-solid fa-calendar-days"></i> Book Consultation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation Booking Modal Form -->
+  <div id="consultation-modal" class="consultation-modal">
+    <div class="consultation-modal-inner">
+      <button class="consultation-close" aria-label="Close form"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="modal-form-title">Consultation</h3>
+      <p class="modal-form-sub">We would love to know more details about your wedding plan.</p>
+      
+      <form id="consultation-form" class="consultation-form">
+        <div class="form-group">
+          <label for="client-name">Your Names</label>
+          <input type="text" id="client-name" name="name" required placeholder="e.g., Ananya & Kabir">
+        </div>
+        <div class="form-group">
+          <label for="client-email">Email Address</label>
+          <input type="email" id="client-email" name="email" required placeholder="e.g., name@example.com">
+        </div>
+        <div class="form-group">
+          <label for="client-phone">Phone Number</label>
+          <input type="tel" id="client-phone" name="phone" required placeholder="e.g., +91 77288 79343">
+        </div>
+        <div class="form-group">
+          <label for="wedding-date">Wedding Date</label>
+          <input type="date" id="wedding-date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="wedding-loc">Location</label>
+          <input type="text" id="wedding-loc" name="location" required placeholder="e.g., Taj Lake Palace, Udaipur">
+        </div>
+        <div class="form-group">
+          <label for="client-msg">Message</label>
+          <textarea id="client-msg" name="message" rows="4" placeholder="Tell us about your celebration..."></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-submit">Submit Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <div class="footer-brand">
+        <h3 class="footer-logo">ClicksToRemember</h3>
+        <p class="footer-tagline">Fine art wedding photography and films.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4 class="footer-nav-title">Services</h4>
+        <ul>
+          <li><a href="#portfolio">Wedding Photography</a></li>
+          <li><a href="#portfolio">Pre Wedding</a></li>
+          <li><a href="#films">Cinematic Films</a></li>
+          <li><a href="#portfolio">Family Photography</a></li>
+          <li><a href="#portfolio">Destination Weddings</a></li>
+          <li><a href="#portfolio">Anniversary Shoots</a></li>
+          <li><a href="#portfolio">Baby Photoshoots</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-info">
+        <h4 class="footer-nav-title">Studio</h4>
+        <p class="info-item"><i class="fa-solid fa-location-dot"></i> 20-C Madhuban, 1st Floor, Hospital Road, Near Richfeel Rahat, Udaipur, Rajasthan</p>
+        <p class="info-item"><i class="fa-solid fa-phone"></i> +91 77288 79343</p>
+        <p class="info-item"><i class="fa-solid fa-envelope"></i> studio@clickstoremember.com</p>
+      </div>
+
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 ClicksToRemember. All Rights Reserved. Crafted with passion.</p>
+    </div>
+  </footer>
+
+  <!-- Lenis + GSAP + modular JS -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</body>
+</html>
