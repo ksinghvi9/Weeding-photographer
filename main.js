@@ -103,6 +103,8 @@ function initGSAPAnimations() {
   });
 
   // 3. Editorial reveals on sections
+  const isMobile = window.innerWidth <= 768;
+  
   gsap.utils.toArray('.section-tag, .section-title, .about-heading, .about-text, .signature').forEach((elem) => {
     gsap.from(elem, {
       scrollTrigger: {
@@ -111,31 +113,33 @@ function initGSAPAnimations() {
         toggleActions: 'play none none none',
       },
       opacity: 0,
-      y: 35,
-      duration: 0.8,
+      y: isMobile ? 15 : 35,
+      duration: isMobile ? 0.6 : 0.8,
       ease: 'power3.out',
     });
   });
 
-  // 4. Parallax effect on gallery masonry items
-  gsap.utils.toArray('.masonry-item-inner img').forEach((img) => {
-    gsap.fromTo(img, {
-      yPercent: -8
-    }, {
-      yPercent: 8,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: img,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true,
-      }
+  // 4. Parallax effect on gallery masonry items (skip on mobile for performance)
+  if (!isMobile) {
+    gsap.utils.toArray('.masonry-item-inner img').forEach((img) => {
+      gsap.fromTo(img, {
+        yPercent: -8
+      }, {
+        yPercent: 8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: img,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        }
+      });
     });
-  });
+  }
 
-  // 5. Testimonial Background Shifting effect
+  // 5. Testimonial Background Shifting effect (skip on mobile to avoid repaint lag)
   const testimonials = document.getElementById('testimonials');
-  if (testimonials) {
+  if (testimonials && !isMobile) {
     gsap.to(testimonials, {
       backgroundColor: '#EADFC9', // Shifts to warm gold-sand
       duration: 1,
@@ -214,6 +218,9 @@ function initStoriesAutoScroll() {
 
   let scrollLeft = 0;
   let isPaused = false;
+  let isDragging = false;
+  let startX;
+  let startScrollLeft;
   const speed = 0.5; // Slow, elegant auto-scroll speed (pixels per frame)
 
   let originalWidth = wrapper.scrollWidth / 2;
@@ -224,7 +231,7 @@ function initStoriesAutoScroll() {
   });
 
   function tick() {
-    if (!isPaused) {
+    if (!isPaused && !isDragging) {
       scrollLeft += speed;
       if (scrollLeft >= originalWidth) {
         scrollLeft -= originalWidth; // Instantly loops back seamlessly
@@ -240,8 +247,55 @@ function initStoriesAutoScroll() {
   });
   
   container.addEventListener('mouseleave', () => {
-    isPaused = false;
+    if (!isDragging) {
+      isPaused = false;
+    }
   });
+
+  // Touch and Drag to Scroll functionality
+  const startDrag = (e) => {
+    isDragging = true;
+    isPaused = true;
+    const pageX = e.type.startsWith('touch') ? e.touches[0].pageX : e.pageX;
+    startX = pageX - container.offsetLeft;
+    startScrollLeft = container.scrollLeft;
+    container.style.cursor = 'grabbing';
+  };
+
+  const stopDrag = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    // Set scrollLeft to the current scroll offset so marquee continues from here
+    scrollLeft = container.scrollLeft;
+    container.style.cursor = 'grab';
+    // Resume auto-scroll after a short delay
+    setTimeout(() => {
+      if (!isDragging) {
+        isPaused = false;
+      }
+    }, 1500);
+  };
+
+  const moveDrag = (e) => {
+    if (!isDragging) return;
+    const pageX = e.type.startsWith('touch') ? e.touches[0].pageX : e.pageX;
+    const x = pageX - container.offsetLeft;
+    const walk = (x - startX) * 1.5; // scroll speed multiplier
+    container.scrollLeft = startScrollLeft - walk;
+  };
+
+  // Mouse drag events
+  container.addEventListener('mousedown', startDrag);
+  container.addEventListener('mousemove', moveDrag);
+  window.addEventListener('mouseup', stopDrag);
+
+  // Touch drag events
+  container.addEventListener('touchstart', startDrag, { passive: true });
+  container.addEventListener('touchmove', moveDrag, { passive: true });
+  container.addEventListener('touchend', stopDrag);
+
+  // Set initial grab cursor
+  container.style.cursor = 'grab';
 
   // Start marquee loop
   requestAnimationFrame(tick);
@@ -697,66 +751,66 @@ function initMagazineStories() {
         { src: "./images/couple_palace.png", title: "Palace Romance", meta: "The Oberoi Udaivilas", layoutClass: "col-span-2" },
         { src: "./images/bride_portrait.png", title: "Bridal Splendor", meta: "Polki Jewellery", layoutClass: "portrait" },
         { src: "./images/royal_groom.png", title: "Royal Groom", meta: "Courtyard Light", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1591555200813-b5e298ee9dca?auto=format&fit=crop&w=800&q=80", title: "Henna Details", meta: "Bridal Prep", layoutClass: "square" },
+        { src: "./images/henna_details.png", title: "Henna Details", meta: "Bridal Prep", layoutClass: "square" },
         { src: "./images/wedding_ceremony.png", title: "The Vows", meta: "Sacred Fire", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", title: "Lakeside Mandap", meta: "Sunset Ceremony", layoutClass: "landscape" },
-        { src: "https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?auto=format&fit=crop&w=800&q=80", title: "Candid Laughter", meta: "Haldi Moments", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1000&q=80", title: "Varmala Ceremony", meta: "The Royal Union", layoutClass: "col-span-2" },
-        { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80", title: "First Dance", meta: "Grand Ballroom", layoutClass: "portrait" }
+        { src: "./images/lakeside_mandap.png", title: "Lakeside Mandap", meta: "Sunset Ceremony", layoutClass: "landscape" },
+        { src: "./images/candid_laugh.png", title: "Candid Laughter", meta: "Haldi Moments", layoutClass: "portrait" },
+        { src: "./images/wedding_ceremony.png", title: "Varmala Ceremony", meta: "The Royal Union", layoutClass: "col-span-2" },
+        { src: "./images/couple_forest.png", title: "First Dance", meta: "Grand Ballroom", layoutClass: "portrait" }
       ]
     },
     "Rohan & Priya": {
       location: "Fateh Garh Palace",
       date: "October 18, 2025",
-      heroImage: "https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?auto=format&fit=crop&w=1200&q=80",
+      heroImage: "./images/lakeside_mandap.png",
       description: "A heritage wedding overlooking Udaipur city, filled with royal custom colors and candid emotional vows.",
       tags: ["Royal Wedding", "Heritage", "Vibrant Ceremony"],
       images: [
-        { src: "https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?auto=format&fit=crop&w=1000&q=80", title: "Candid Walk", meta: "Fateh Garh Palace", layoutClass: "col-span-2" },
-        { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=80", title: "The Palace Entrance", meta: "Arriving at Fateh Garh", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80", title: "Dancing Under Stars", meta: "Garden Reception", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1591555200813-b5e298ee9dca?auto=format&fit=crop&w=1000&q=80", title: "Henna Grace", meta: "Hand details", layoutClass: "square" },
-        { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80", title: "Mandap View", meta: "Lakeside Ceremony", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1550005814-724f3620c47d?auto=format&fit=crop&w=1000&q=80", title: "Palace Ballroom", meta: "Reception Hall", layoutClass: "landscape" },
-        { src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1000&q=80", title: "The Varmala Exchange", meta: "Traditional Ritual", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1000&q=80", title: "Pure Joy", meta: "Candid Smile", layoutClass: "col-span-2" },
-        { src: "https://images.unsplash.com/photo-1519225495810-7512c696af37?auto=format&fit=crop&w=1000&q=80", title: "Shadows and Light", meta: "Lake Pier", layoutClass: "portrait" }
+        { src: "./images/candid_laugh.png", title: "Candid Walk", meta: "Fateh Garh Palace", layoutClass: "col-span-2" },
+        { src: "./images/couple_forest.png", title: "The Palace Entrance", meta: "Arriving at Fateh Garh", layoutClass: "portrait" },
+        { src: "./images/couple_palace.png", title: "Dancing Under Stars", meta: "Garden Reception", layoutClass: "portrait" },
+        { src: "./images/henna_details.png", title: "Henna Grace", meta: "Hand details", layoutClass: "square" },
+        { src: "./images/lakeside_mandap.png", title: "Mandap View", meta: "Lakeside Ceremony", layoutClass: "portrait" },
+        { src: "./images/wedding_ceremony.png", title: "Palace Ballroom", meta: "Reception Hall", layoutClass: "landscape" },
+        { src: "./images/wedding_ceremony.png", title: "The Varmala Exchange", meta: "Traditional Ritual", layoutClass: "portrait" },
+        { src: "./images/candid_laugh.png", title: "Pure Joy", meta: "Candid Smile", layoutClass: "col-span-2" },
+        { src: "./images/couple_forest.png", title: "Shadows and Light", meta: "Lake Pier", layoutClass: "portrait" }
       ]
     },
     "Kunal & Aditi": {
       location: "Chunda Palace",
       date: "December 08, 2025",
-      heroImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+      heroImage: "./images/couple_forest.png",
       description: "A spectacular indoor traditional palace wedding highlighting intricate gold walls and vibrant traditional events.",
       tags: ["Palace Luxury", "Sheesh Mahal", "Traditional Ceremony"],
       images: [
-        { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80", title: "The Indoor Mandap", meta: "Chunda Palace", layoutClass: "col-span-2" },
-        { src: "https://images.unsplash.com/photo-1507504038482-76210f5c0be1?auto=format&fit=crop&w=1000&q=80", title: "Golden Hour Glow", meta: "Lakeside View", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1519225495810-7512c696af37?auto=format&fit=crop&w=1000&q=80", title: "Quiet Moments", meta: "Palace Corridor", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1549417229-aa67d3263c09?auto=format&fit=crop&w=1000&q=80", title: "Bridal Portrait", meta: "Sunrise Light", layoutClass: "square" },
-        { src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1000&q=80", title: "Ring Exchange", meta: "Lakeside Deck", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1529636798458-955852a41286?auto=format&fit=crop&w=1000&q=80", title: "The Dinner Spread", meta: "Palace Gardens", layoutClass: "landscape" },
-        { src: "https://images.unsplash.com/photo-1502472591609-f641fc718695?auto=format&fit=crop&w=1000&q=80", title: "Hand in Hand", meta: "Palace Courtyard", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=80", title: "Candid Grace", meta: "Bride's Portrait", layoutClass: "col-span-2" },
-        { src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80", title: "Departure", meta: "Bidaai Ceremony", layoutClass: "portrait" }
+        { src: "./images/lakeside_mandap.png", title: "The Indoor Mandap", meta: "Chunda Palace", layoutClass: "col-span-2" },
+        { src: "./images/couple_palace.png", title: "Golden Hour Glow", meta: "Lakeside View", layoutClass: "portrait" },
+        { src: "./images/couple_forest.png", title: "Quiet Moments", meta: "Palace Corridor", layoutClass: "portrait" },
+        { src: "./images/bride_portrait.png", title: "Bridal Portrait", meta: "Sunrise Light", layoutClass: "square" },
+        { src: "./images/wedding_ceremony.png", title: "Ring Exchange", meta: "Lakeside Deck", layoutClass: "portrait" },
+        { src: "./images/lakeside_mandap.png", title: "The Dinner Spread", meta: "Palace Gardens", layoutClass: "landscape" },
+        { src: "./images/couple_palace.png", title: "Hand in Hand", meta: "Palace Courtyard", layoutClass: "portrait" },
+        { src: "./images/bride_portrait.png", title: "Candid Grace", meta: "Bride's Portrait", layoutClass: "col-span-2" },
+        { src: "./images/couple_forest.png", title: "Departure", meta: "Bidaai Ceremony", layoutClass: "portrait" }
       ]
     },
     "Harsh & Naina": {
       location: "Jagmandir Island Palace",
       date: "September 24, 2025",
-      heroImage: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80",
+      heroImage: "./images/candid_laugh.png",
       description: "A sunset celebration set on a private island, capturing deep emotional glances and beautiful reflections.",
       tags: ["Island Wedding", "Sunset", "Emotional Vows"],
       images: [
-        { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=80", title: "Palatial Scale", meta: "Jagmandir Island", layoutClass: "col-span-2" },
-        { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80", title: "Sunset Stroll", meta: "Island Deck", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80", title: "Whispers by the Water", meta: "Lake Pichola Side", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=1000&q=80", title: "Intimate Close-up", meta: "Golden Hour", layoutClass: "square" },
-        { src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1000&q=80", title: "Promise of Love", meta: "Lakeside Vows", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1000&q=80", title: "Palace Arches", meta: "Stonework Details", layoutClass: "landscape" },
-        { src: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80", title: "Celebration Spark", meta: "Engagement Night", layoutClass: "portrait" },
-        { src: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1000&q=80", title: "Dancing in the Rain", meta: "Island Gardens", layoutClass: "col-span-2" },
-        { src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=80", title: "The Portrait", meta: "Black & White Classic", layoutClass: "portrait" }
+        { src: "./images/couple_forest.png", title: "Palatial Scale", meta: "Jagmandir Island", layoutClass: "col-span-2" },
+        { src: "./images/couple_palace.png", title: "Sunset Stroll", meta: "Island Deck", layoutClass: "portrait" },
+        { src: "./images/couple_forest.png", title: "Whispers by the Water", meta: "Lake Pichola Side", layoutClass: "portrait" },
+        { src: "./images/royal_groom.png", title: "Intimate Close-up", meta: "Golden Hour", layoutClass: "square" },
+        { src: "./images/wedding_ceremony.png", title: "Promise of Love", meta: "Lakeside Vows", layoutClass: "portrait" },
+        { src: "./images/couple_palace.png", title: "Palace Arches", meta: "Stonework Details", layoutClass: "landscape" },
+        { src: "./images/candid_laugh.png", title: "Celebration Spark", meta: "Engagement Night", layoutClass: "portrait" },
+        { src: "./images/couple_forest.png", title: "Dancing in the Rain", meta: "Island Gardens", layoutClass: "col-span-2" },
+        { src: "./images/bride_portrait.png", title: "The Portrait", meta: "Black & White Classic", layoutClass: "portrait" }
       ]
     }
   };
