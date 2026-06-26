@@ -584,10 +584,16 @@ function initLazyLoading() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const img = entry.target;
-          img.src = img.getAttribute('data-src');
-          img.addEventListener('load', () => {
-            img.classList.add('loaded');
-          });
+          const srcVal = img.getAttribute('data-src');
+          if (srcVal) {
+            img.addEventListener('load', () => {
+              img.classList.add('loaded');
+            });
+            img.src = srcVal;
+            if (img.complete) {
+              img.classList.add('loaded');
+            }
+          }
           imageObserver.unobserve(img);
         }
       });
@@ -597,8 +603,11 @@ function initLazyLoading() {
   } else {
     // Fallback
     lazyImages.forEach((img) => {
-      img.src = img.getAttribute('data-src');
-      img.classList.add('loaded');
+      const srcVal = img.getAttribute('data-src');
+      if (srcVal) {
+        img.src = srcVal;
+        img.classList.add('loaded');
+      }
     });
   }
 }
@@ -767,8 +776,8 @@ function initMagazineStories() {
       tags: ["Royal Wedding", "Heritage", "Vibrant Ceremony"],
       images: [
         { src: "./images/candid_laugh.png", title: "Candid Walk", meta: "Fateh Garh Palace", layoutClass: "col-span-2" },
-        { src: "./images/couple_forest.png", title: "The Palace Entrance", meta: "Arriving at Fateh Garh", layoutClass: "portrait" },
-        { src: "./images/couple_palace.png", title: "Dancing Under Stars", meta: "Garden Reception", layoutClass: "portrait" },
+        { src: "./images/couple_palace.png", title: "The Palace Entrance", meta: "Arriving at Fateh Garh", layoutClass: "portrait" },
+        { src: "./images/bride_portrait.png", title: "Dancing Under Stars", meta: "Garden Reception", layoutClass: "portrait" },
         { src: "./images/henna_details.png", title: "Henna Grace", meta: "Hand details", layoutClass: "square" },
         { src: "./images/lakeside_mandap.png", title: "Mandap View", meta: "Lakeside Ceremony", layoutClass: "portrait" },
         { src: "./images/wedding_ceremony.png", title: "Palace Ballroom", meta: "Reception Hall", layoutClass: "landscape" },
@@ -780,13 +789,13 @@ function initMagazineStories() {
     "Kunal & Aditi": {
       location: "Chunda Palace",
       date: "December 08, 2025",
-      heroImage: "./images/couple_forest.png",
+      heroImage: "./images/wedding_ceremony.png",
       description: "A spectacular indoor traditional palace wedding highlighting intricate gold walls and vibrant traditional events.",
       tags: ["Palace Luxury", "Sheesh Mahal", "Traditional Ceremony"],
       images: [
         { src: "./images/lakeside_mandap.png", title: "The Indoor Mandap", meta: "Chunda Palace", layoutClass: "col-span-2" },
         { src: "./images/couple_palace.png", title: "Golden Hour Glow", meta: "Lakeside View", layoutClass: "portrait" },
-        { src: "./images/couple_forest.png", title: "Quiet Moments", meta: "Palace Corridor", layoutClass: "portrait" },
+        { src: "./images/royal_groom.png", title: "Quiet Moments", meta: "Palace Corridor", layoutClass: "portrait" },
         { src: "./images/bride_portrait.png", title: "Bridal Portrait", meta: "Sunrise Light", layoutClass: "square" },
         { src: "./images/wedding_ceremony.png", title: "Ring Exchange", meta: "Lakeside Deck", layoutClass: "portrait" },
         { src: "./images/lakeside_mandap.png", title: "The Dinner Spread", meta: "Palace Gardens", layoutClass: "landscape" },
@@ -804,10 +813,10 @@ function initMagazineStories() {
       images: [
         { src: "./images/couple_forest.png", title: "Palatial Scale", meta: "Jagmandir Island", layoutClass: "col-span-2" },
         { src: "./images/couple_palace.png", title: "Sunset Stroll", meta: "Island Deck", layoutClass: "portrait" },
-        { src: "./images/couple_forest.png", title: "Whispers by the Water", meta: "Lake Pichola Side", layoutClass: "portrait" },
-        { src: "./images/royal_groom.png", title: "Intimate Close-up", meta: "Golden Hour", layoutClass: "square" },
+        { src: "./images/royal_groom.png", title: "Whispers by the Water", meta: "Lake Pichola Side", layoutClass: "portrait" },
+        { src: "./images/henna_details.png", title: "Intimate Close-up", meta: "Golden Hour", layoutClass: "square" },
         { src: "./images/wedding_ceremony.png", title: "Promise of Love", meta: "Lakeside Vows", layoutClass: "portrait" },
-        { src: "./images/couple_palace.png", title: "Palace Arches", meta: "Stonework Details", layoutClass: "landscape" },
+        { src: "./images/lakeside_mandap.png", title: "Palace Arches", meta: "Stonework Details", layoutClass: "landscape" },
         { src: "./images/candid_laugh.png", title: "Celebration Spark", meta: "Engagement Night", layoutClass: "portrait" },
         { src: "./images/couple_forest.png", title: "Dancing in the Rain", meta: "Island Gardens", layoutClass: "col-span-2" },
         { src: "./images/bride_portrait.png", title: "The Portrait", meta: "Black & White Classic", layoutClass: "portrait" }
@@ -829,7 +838,7 @@ function initMagazineStories() {
       // Construct dynamic html for luxury centered card
       let cardHTML = `
         <div class="story-card-hero">
-          <img src="${data.heroImage}" alt="${names} Cover Image">
+          <img src="${data.heroImage}" alt="${names} Cover Image" onload="this.classList.add('loaded')">
           <div class="story-card-hero-overlay"></div>
         </div>
         
@@ -848,7 +857,7 @@ function initMagazineStories() {
           <div class="story-card-gallery">
             ${data.images.map((img) => `
               <div class="story-grid-item ${img.layoutClass}">
-                <img src="${img.src}" alt="${img.title}">
+                <img src="${img.src}" alt="${img.title}" onload="this.classList.add('loaded')">
                 <div class="item-title" style="display: none;">${img.title}</div>
                 <div class="item-meta" style="display: none;">${img.meta}</div>
               </div>
